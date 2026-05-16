@@ -5,13 +5,13 @@ import CountUp from 'react-countup'
 import { siteData } from '../data/content'
 
 function StatCard({ stat, index }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.4 })
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.6, delay: index * 0.15, ease: 'easeOut' }}
       className="flex-1 min-w-[200px]"
     >
@@ -40,7 +40,7 @@ function StatCard({ stat, index }) {
 }
 
 export default function Stats() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
 
   return (
     <section id="stats" className="bg-dark-2 pt-6 pb-20">
@@ -48,7 +48,7 @@ export default function Stats() {
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          animate={inView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
           className="flex flex-col sm:flex-row gap-6"
         >

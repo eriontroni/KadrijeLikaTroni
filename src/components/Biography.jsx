@@ -122,13 +122,13 @@ const biographyData = {
 const iconMap = { GraduationCap, Briefcase, Star, Award }
 
 function TimelineItem({ item, index }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.15 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.15 })
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, x: -30 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
+      animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="flex gap-4 group"
     >
@@ -150,14 +150,14 @@ function TimelineItem({ item, index }) {
 }
 
 function BiographySection({ section, index }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
   const Icon = iconMap[section.icon]
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-500"
     >
@@ -177,7 +177,7 @@ function BiographySection({ section, index }) {
 }
 
 export default function Biography() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
   const { personal } = biographyData
 
   return (
@@ -193,7 +193,7 @@ export default function Biography() {
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7 }}
           className="text-center mb-14 lg:mb-18"
         >
@@ -212,7 +212,7 @@ export default function Biography() {
         {/* Personal info card */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7, delay: 0.15 }}
           className="bg-gradient-to-br from-primary to-red-700 rounded-3xl p-8 mb-10 text-white shadow-xl shadow-primary/20"
         >
@@ -252,7 +252,7 @@ export default function Biography() {
         {/* Achievement highlight */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-10 bg-gradient-to-r from-gray-50 to-red-50 rounded-3xl p-8 border border-red-100 flex flex-col sm:flex-row items-center gap-6"
         >

@@ -7,14 +7,14 @@ import { siteData } from '../data/content'
 const iconMap = { GraduationCap, Building2, TrendingUp }
 
 function PriorityCard({ priority, index }) {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 })
   const Icon = iconMap[priority.icon]
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 60 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.7, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="group"
     >
@@ -64,7 +64,7 @@ function PriorityCard({ priority, index }) {
 }
 
 export default function Priorities() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
 
   return (
     <section id="prioritetet" className="relative py-24 lg:py-32 bg-gray-light overflow-hidden">
@@ -82,7 +82,7 @@ export default function Priorities() {
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.7 }}
           className="text-center mb-16 lg:mb-20"
         >
@@ -108,7 +108,7 @@ export default function Priorities() {
         {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center mt-14"
         >

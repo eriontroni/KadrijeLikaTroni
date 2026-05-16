@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { Users, Mail, ArrowRight, Sparkles } from 'lucide-react'
 
 export default function CTA() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 })
 
   return (
     <section className="relative py-24 lg:py-36 bg-dark overflow-hidden">
@@ -33,13 +33,13 @@ export default function CTA() {
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="inline-flex items-center gap-2 border border-primary/40 text-primary text-xs font-bold tracking-widest uppercase px-5 py-2.5 rounded-full mb-10"
           >
@@ -62,7 +62,7 @@ export default function CTA() {
           {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-5 justify-center"
           >

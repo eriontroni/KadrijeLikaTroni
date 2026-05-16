@@ -8,7 +8,7 @@ import { siteData } from '../data/content'
 const socialIconMap = { Facebook, Instagram, Youtube }
 
 export default function Footer() {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.1 })
   const { footer } = siteData
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -21,7 +21,7 @@ export default function Footer() {
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16"
         >
